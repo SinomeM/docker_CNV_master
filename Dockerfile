@@ -1,6 +1,12 @@
 FROM rocker/ml:latest
 
-# install tabix
+# Clean any existing locks
+USER root
+RUN rm -f /var/lib/apt/lists/lock
+RUN rm -f /var/lib/dpkg/lock
+
+# update and install new packages
+RUN apt-get clean
 RUN apt-get update --yes && \
   apt-get upgrade --yes
 
@@ -37,6 +43,8 @@ RUN apt-get install -y --no-install-recommends \
   libtiff5-dev \
   libjpeg-dev
 
+# USER sm
+
 # Additional R packages
 ADD install_pkgs.R /tmp/
 RUN Rscript /tmp/install_pkgs.R
@@ -57,11 +65,11 @@ ENV PATH="/opt/htslib/bin:${PATH}"
 #   COPY plink /opt/plink
 #   ENV PATH="/opt/plink:${PATH}"
 
-# install PennCNV
-COPY PennCNV-1.0.5 /opt/PennCNV-1.0.5
-ENV PATH="/opt/PennCNV-1.0.5:${PATH}"
-RUN cd /opt/PennCNV-1.0.5/kext && \
-  make
+#   # install PennCNV
+#   COPY PennCNV-1.0.5 /opt/PennCNV-1.0.5
+#   ENV PATH="/opt/PennCNV-1.0.5:${PATH}"
+#   RUN cd /opt/PennCNV-1.0.5/kext && \
+#     make
 
 # install bcftools
 COPY bcftools-1.14 /opt/bcftools-1.14
