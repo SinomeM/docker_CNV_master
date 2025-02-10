@@ -16,9 +16,13 @@ install.packages(c("data.table",
                    "knitr",
                    "qpdf",
                    "lubridate",
-                   "testthat",
-                   "torch"))
+                   "patchwork",
+                   "testthat"))
 
+# torch
+options(timeout = 6000)
+Sys.setenv(CUDA="11.8")
+install.packages("torch")
 torch::install_torch()
 
 # torch add-on packages
@@ -30,7 +34,7 @@ if (!require("BiocManager", quietly = TRUE))
 
 BiocManager::install(c("GenomicRanges",
                        "igvR",
-                       "VariantAnnotaion",
+                       "VariantAnnotation",
                        "Rsamtools",
                        "biomaRt",
                        "BiocParallel",

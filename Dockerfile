@@ -1,9 +1,9 @@
-FROM rocker/ml:latest
+FROM rocker/ml:4.4
 
-# Clean any existing locks
-USER root
-RUN rm -f /var/lib/apt/lists/lock
-RUN rm -f /var/lib/dpkg/lock
+## Clean any existing locks
+#USER root
+#RUN rm -f /var/lib/apt/lists/lock
+#RUN rm -f /var/lib/dpkg/lock
 
 # update and install new packages
 RUN apt-get clean
@@ -13,6 +13,7 @@ RUN apt-get update --yes && \
 RUN apt-get install -y --no-install-recommends \
   tabix \
   build-essential \
+  cmake \
   libperl-dev \
   zlib1g-dev \
   libbz2-dev \
@@ -42,8 +43,6 @@ RUN apt-get install -y --no-install-recommends \
   libpng-dev \
   libtiff5-dev \
   libjpeg-dev
-
-# USER sm
 
 # Additional R packages
 ADD install_pkgs.R /tmp/
