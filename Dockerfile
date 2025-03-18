@@ -8,7 +8,7 @@ FROM rocker/ml:4.4
 # update and install new packages
 RUN apt-get clean
 RUN apt-get update --yes
-# RUN apt-get upgrade --yes
+RUN apt-get upgrade --yes
 
 RUN apt-get install -y --no-install-recommends \
   tabix \
