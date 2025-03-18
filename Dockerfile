@@ -7,8 +7,8 @@ RUN rm -f /var/lib/dpkg/lock
 
 # update and install new packages
 RUN apt-get clean
-RUN apt-get update --yes && \
-  apt-get upgrade --yes
+RUN apt-get update --yes
+# RUN apt-get upgrade --yes
 
 RUN apt-get install -y --no-install-recommends \
   tabix \
