@@ -7,3 +7,5 @@ installation should be GPU capable.
 
 At the moment it's missing PennCNV, as I'm unable to build
 it.
+
+Available here <https://hub.docker.com/repository/docker/sinomem/cnv_master/general>
