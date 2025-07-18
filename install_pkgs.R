@@ -40,6 +40,3 @@ BiocManager::install(c("GenomicRanges",
                        "BiocParallel",
                        "ggbio"), ask = FALSE)
 
-# GitHub packages
-devtools::install_github("sinomem/QCtreeCNV")
-devtools::install_github("sinomem/CNValidatron_fl")

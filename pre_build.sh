@@ -23,5 +23,3 @@ rm bcftools-1.14.tar.bz2
 # download DeepEYE
 git clone https://github.com/XabierCS/eyeCNV.git
 
-# Download shinyCNV git repo
-git clone https://github.com/SinomeM/shinyCNV.git
